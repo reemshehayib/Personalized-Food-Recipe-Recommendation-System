@@ -87,7 +87,7 @@ def recommend_dishes(data, user_input, n_recommendations):
     user_vector = vectorizer.transform([user_input])
 
     user_cluster = kmeans.predict(user_vector)[0]
-    cluster_data = data[data['Cluster'] == user_cluster]
+    cluster_data = data[data['Ingredients_Cluster'] == user_cluster]
     cluster_matrix = vectorizer.transform(cluster_data['Cleaned_Ingredients'])
 
     similarities = cosine_similarity(user_vector, cluster_matrix)
